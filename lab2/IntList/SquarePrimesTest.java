@@ -3,7 +3,7 @@ package IntList;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class SquarePrimesTest {
+public class  SquarePrimesTest {
 
     /**
      * Here is a test for isPrime method. Try running it.
@@ -15,6 +15,14 @@ public class SquarePrimesTest {
         IntList lst = IntList.of(14, 15, 16, 17, 18);
         boolean changed = IntListExercises.squarePrimes(lst);
         assertEquals("14 -> 15 -> 16 -> 289 -> 18", lst.toString());
+        assertTrue(changed);
+    }
+
+    @Test
+    public void testSquarePrimeSimple2() {
+        IntList lst = IntList.of(16, 10, 3, 1, 17);
+        boolean changed = IntListExercises.squarePrimes(lst);
+        assertEquals("16 -> 10 -> 9 -> 1 -> 289", lst.toString());
         assertTrue(changed);
     }
 }
