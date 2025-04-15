@@ -120,20 +120,22 @@ public class Model extends Observable {
                 Tile t = board.tile(c, r);
                 int pCol;
                 int pRow;
+
                 if (t != null) {
-                    pCol = side.col(t.col(), t.row(), board.size());
-                    pRow = side.row(t.col(), t.row(), board.size());
+                    pCol = c;
+                    pRow = r;
                 } else {
                     continue;
                 }
+
                 while (t != null && pRow + 1 < board.size()) {
                     if (board.tile(pCol, pRow + 1) != null && board.tile(pCol, pRow + 1).value() == t.value()) {
                         if (merged) {
                             merged = false;
                             break;
                         } else {
-                            board.move(pCol, pRow + 1, t);
-                            t = board.tile(pCol, pRow + 1);
+                            board.move(pCol,  pRow + 1, t);
+                            t = board.tile(pCol,  pRow + 1);
                             pRow += 1;
                             merged = true;
                             score += t.value();
@@ -145,6 +147,7 @@ public class Model extends Observable {
                         pRow += 1;
                         changed = true;
                     } else {
+                        merged = false;
                         break;
                     }
 
